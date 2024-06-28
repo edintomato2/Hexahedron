@@ -1,0 +1,210 @@
+[gd_scene load_steps=16 format=3 uid="uid://bcoie8udyjh2f"]
+
+[ext_resource type="ArrayMesh" uid="uid://c7xucvd5gjmiu" path="res://Assets/Models/hexahedron_1ao.fezao.obj" id="1_7fag7"]
+[ext_resource type="Script" path="res://Scripts/Pivot.gd" id="1_kn0tb"]
+[ext_resource type="Texture2D" uid="uid://ddxgoh13pl88q" path="res://Assets/Models/hexahedron_1ao.fezao.png" id="1_yyt1c"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8g3j8"]
+
+[sub_resource type="Sky" id="Sky_up10x"]
+sky_material = SubResource("PanoramaSkyMaterial_8g3j8")
+
+[sub_resource type="Environment" id="Environment_r7hbt"]
+background_mode = 1
+background_color = Color(0.145098, 0.0901961, 0.203922, 1)
+sky = SubResource("Sky_up10x")
+ambient_light_color = Color(0, 0, 0, 0.211765)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3066"]
+albedo_texture = ExtResource("1_yyt1c")
+metallic = 0.7
+roughness = 0.61
+texture_filter = 0
+
+[sub_resource type="Animation" id="Animation_xfyua"]
+resource_name = "spin"
+length = 5.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.418879, -7.15585, 1.11701), Vector3(0.418879, -0.872665, 1.11701)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, -0.2, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l8sq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.785398, 3.14159, 0.785398)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uyrm4"]
+resource_name = "install"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.943176, -3.13761, 2.36383)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ck24r"]
+_data = {
+"RESET": SubResource("Animation_l8sq1"),
+"install": SubResource("Animation_uyrm4"),
+"spin": SubResource("Animation_xfyua")
+}
+
+[sub_resource type="Animation" id="Animation_vypv3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kxan3"]
+resource_name = "spin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ukrhc"]
+resource_name = "spin_loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ctwt1"]
+_data = {
+"RESET": SubResource("Animation_vypv3"),
+"spin": SubResource("Animation_kxan3"),
+"spin_loop": SubResource("Animation_ukrhc")
+}
+
+[node name="Hexahedron" type="Node3D"]
+script = ExtResource("1_kn0tb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r7hbt")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+projection = 1
+size = 13.0
+
+[node name="Hexahedron1Ao_fezao" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(-0.707107, 0.707107, -6.18172e-08, 0.5, 0.5, -0.707107, -0.5, -0.5, -0.707107, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_p3066")
+mesh = ExtResource("1_7fag7")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Hexahedron1Ao_fezao"]
+libraries = {
+"": SubResource("AnimationLibrary_ck24r")
+}
+autoplay = "spin"
+playback_default_blend_time = 1.0
+speed_scale = 0.5
+
+[node name="PivotAnim" type="AnimationPlayer" parent="Pivot"]
+libraries = {
+"": SubResource("AnimationLibrary_ctwt1")
+}
+speed_scale = 2.0
+
+[node name="Top Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+light_energy = 0.4
+sky_mode = 1
+
+[node name="Front Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)
+light_energy = 0.4
+sky_mode = 1

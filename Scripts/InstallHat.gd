@@ -3,6 +3,8 @@ extends HBoxContainer
 @onready var _ch: OptionButton = $"Chooser"
 @onready var _log: RichTextLabel = $"../Log"
 
+signal installed(code: int)
+
 func _ready() -> void:
 	if FileAccess.file_exists("user://releases.atom") != false:
 		_add_versions()
@@ -67,7 +69,7 @@ func _install_version(result, _response, _headers, body) -> void: # Install a ve
 	var hatzip = FileAccess.open(Config.installDir + "/HAT.zip", FileAccess.WRITE)
 	hatzip.store_buffer(body)
 	hatzip.close()
-	_log.append_text("Downloaded selected version")
+	_log.append_text("Downloaded selected version...")
 	
 	# Unpack HAT into dir
 	var zip = ZIPReader.new()
@@ -100,11 +102,11 @@ func _install_version(result, _response, _headers, body) -> void: # Install a ve
 					+ Config.installDir.replace("/", "\\") + "\"\"\"; "
 					+ ".\\hat_install2.bat"
 					]
-	var out := []
-	var exitcode = OS.execute("powershell.exe", commands, out)
-	_log.append_text("\n" + out[0])
+	var out := ["a"]
+	OS.execute("powershell.exe", commands, out)
+	emit_signal("installed", 0)
 	
 	pass
 
-func _on_install_pressed() -> void:
+func _on_hexahedron_start_install() -> void:
 	_download_version(_ch.text)

@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bnv70te3yjfob"]
+
+[ext_resource type="FontFile" uid="uid://cryh2pwcfch8e" path="res://Assets/pixel by Acemond.ttf" id="1_0q4rk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2qx7"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_color = Color(1, 1, 1, 0.388235)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 12
+
+[resource]
+Button/fonts/font = ExtResource("1_0q4rk")
+LineEdit/fonts/font = ExtResource("1_0q4rk")
+OptionButton/fonts/font = ExtResource("1_0q4rk")
+RichTextLabel/fonts/normal_font = ExtResource("1_0q4rk")
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_x2qx7")
